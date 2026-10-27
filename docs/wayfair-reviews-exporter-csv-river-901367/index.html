@@ -4,49 +4,160 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="extension-policy-id" content="wayfair-reviews-exporter-csv-river-901367">
+  <meta name="description" content="How Wayfair Reviews Exporter - CSV handles review exports, local storage, optional accounts, payments and deletion requests.">
+  <meta name="theme-color" content="#203e37">
   <title>Privacy Policy — Wayfair Reviews Exporter - CSV</title>
-  <style>:root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #171717; background: #f7f7f7; }
-* { box-sizing: border-box; }
-body { margin: 0; padding: 40px 24px; font-size: 16px; line-height: 1.7; }
-main { width: 100%; max-width: 840px; margin: 0 auto; padding: 40px; background: #fff; border: 1px solid #ededed; border-radius: 12px; box-shadow: 0 2px 5px rgb(0 0 0 / 3%); }
-header { margin-bottom: 32px; text-align: center; }
-h1 { margin: 0; font-size: 32px; line-height: 1.4; font-weight: 700; letter-spacing: -.025em; }
-h1::after { content: ""; display: block; width: 48px; height: 3px; margin: 16px auto; border-radius: 2px; background: #333; }
-.updated { margin: 0; color: #595959; font-size: 14px; }
-p { margin: 16px 0; color: #444; overflow-wrap: anywhere; }
-strong { color: #171717; }
-section { margin-top: 36px; }
-h2 { position: relative; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid #ddd; font-size: 24px; line-height: 1.4; font-weight: 650; letter-spacing: -.015em; }
-h2::after { content: ""; position: absolute; bottom: -1px; left: 0; width: 32px; height: 1px; background: #595959; }
-ul { margin: 16px 0; padding-left: 24px; color: #444; }
-li { margin: 10px 0; padding-left: 2px; }
-a { color: #333; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
-a:hover { color: #000; }
-a:focus-visible { outline: 2px solid #333; outline-offset: 3px; }
-.contact { margin-top: 40px; padding: 24px; border: 1px solid #e5e5e5; border-left: 3px solid #333; border-radius: 3px 10px 10px 3px; background: #f7f7f7; }
-.contact h2 { padding: 0; border: 0; margin-bottom: 18px; }
-.contact h2::after { display: none; }
-.contact p:last-child { margin-bottom: 0; }
-@media (max-width: 600px) { body { padding: 16px 12px; } main { padding: 28px 20px; border-radius: 10px; } h1 { font-size: 30px; } h2 { font-size: 22px; } .contact { padding: 20px; } }
-@media print { :root { background: #fff; } body { padding: 0; } main { max-width: none; padding: 0; border: 0; box-shadow: none; } h2 { break-after: avoid; } .contact { break-inside: avoid; } }</style>
+  <style>
+    :root { color-scheme: light; --paper: #f7f6f0; --ink: #203e37; --body: #3c4944; --muted: #647169; --line: #d4d9cf; --accent: #d9e5a2; font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif; background: var(--paper); color: var(--body); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 28px; }
+    body { margin: 0; font-size: 16px; line-height: 1.8; }
+    ::selection { background: var(--accent); color: var(--ink); }
+    a { color: var(--ink); text-underline-offset: 4px; text-decoration-thickness: 1px; overflow-wrap: anywhere; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+    .skip { position: absolute; top: 10px; left: 16px; padding: 8px 16px; background: white; transform: translateY(-160%); z-index: 10; }
+    .skip:focus { transform: translateY(0); }
+    main { width: min(1160px, calc(100% - 96px)); margin: 0 auto; }
+    .masthead { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 13px; font-weight: 600; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { display: inline-grid; grid-template-columns: repeat(3, 4px); gap: 3px; padding: 10px; border: 1px solid var(--ink); }
+    .brand-mark i { height: 4px; background: var(--ink); }
+    .masthead-note, .eyebrow, .section-number, .contents-title, .summary-label, .meta-label, .footer { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+    .masthead-note { font-size: 10px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; }
+    .hero { padding: 70px 0 42px; display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 64px; align-items: end; }
+    .eyebrow { margin: 0 0 22px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .13em; }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; color: var(--ink); }
+    h1 { font-size: clamp(56px, 7vw, 90px); line-height: 1.03; letter-spacing: -.05em; margin: 0 0 26px; }
+    .hero-copy { max-width: 620px; margin: 0; font-size: 18px; line-height: 1.65; }
+    .hero-copy strong { font-weight: 600; }
+    .metadata { border-left: 1px solid var(--line); padding-left: 26px; margin: 0 0 6px; }
+    .metadata div + div { margin-top: 18px; }
+    .meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: .11em; color: var(--muted); }
+    .metadata dd { margin: 3px 0 0; font-size: 14px; color: var(--ink); }
+    .summary { display: grid; grid-template-columns: 1fr 1fr; background: var(--ink); color: #f7f6f0; padding: 28px 32px; margin: 0 0 58px; gap: 32px; }
+    .summary > div + div { border-left: 1px solid #5f746c; padding-left: 32px; }
+    .summary-label { color: var(--accent); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .summary p { margin: 6px 0 0; font-size: 14px; line-height: 1.7; }
+    .document { display: grid; grid-template-columns: 245px minmax(0, 1fr); gap: 72px; align-items: start; }
+    .contents { position: sticky; top: 32px; padding: 0 0 24px; }
+    .contents-title { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+    .contents ol { list-style: none; padding: 0; margin: 0; }
+    .contents li { margin: 0; padding: 0; border-top: 1px solid var(--line); }
+    .contents li:last-child { border-bottom: 1px solid var(--line); }
+    .contents a { display: flex; gap: 14px; padding: 11px 0; text-decoration: none; font-size: 12px; line-height: 1.6; }
+    .contents a:hover { color: #000; background: #e9eddf; }
+    .contents a span { color: var(--muted); font-size: 10px; font-family: "SFMono-Regular", Consolas, monospace; padding-top: 2px; }
+    .article { min-width: 0; }
+    section { margin: 0 0 38px; padding: 0 0 34px; border-bottom: 1px solid var(--line); }
+    .section-heading { display: flex; align-items: baseline; gap: 15px; margin-bottom: 20px; }
+    .section-number { font-size: 11px; color: var(--muted); }
+    h2 { font-size: 31px; line-height: 1.25; letter-spacing: -.025em; margin: 0; scroll-margin-top: 28px; }
+    .article p { margin: 16px 0; }
+    .article p:last-child { margin-bottom: 0; }
+    strong { color: var(--ink); font-weight: 600; }
+    .article ul { margin: 16px 0; padding-left: 22px; }
+    .article li { margin: 12px 0; padding-left: 4px; }
+    .article li::marker { color: #718668; }
+    .contact { padding: 30px; border: 1px solid var(--line); background: #e9eddf; margin-bottom: 44px; }
+    .contact .section-heading { margin-bottom: 14px; }
+    .footer { border-top: 1px solid var(--line); padding: 24px 0 32px; display: flex; justify-content: space-between; gap: 24px; font-size: 10px; color: var(--muted); }
+    .footer a { white-space: nowrap; }
+    @media (max-width: 1000px) {
+      main { width: calc(100% - 64px); }
+      .document { grid-template-columns: 205px minmax(0, 1fr); gap: 40px; }
+      .hero { gap: 32px; grid-template-columns: minmax(0, 1fr) 190px; }
+    }
+    @media (max-width: 760px) {
+      main { width: calc(100% - 40px); }
+      .masthead { padding: 20px 0; font-size: 11px; }
+      .brand { gap: 10px; }
+      .masthead-note { display: none; }
+      .hero { display: block; padding: 42px 0 28px; }
+      h1 { font-size: clamp(51px, 13vw, 74px); margin-bottom: 20px; }
+      .eyebrow { margin-bottom: 18px; font-size: 10px; }
+      .hero-copy { font-size: 16px; }
+      .metadata { display: flex; gap: 28px; flex-wrap: wrap; border-left: 0; border-top: 1px solid var(--line); padding: 18px 0 0; margin: 24px 0 0; }
+      .metadata div + div { margin-top: 0; }
+      .metadata dd { font-size: 12px; }
+      .summary { display: block; padding: 23px; margin-bottom: 30px; }
+      .summary > div + div { padding: 16px 0 0; margin-top: 16px; border-left: 0; border-top: 1px solid #5f746c; }
+      .document { display: block; }
+      .contents { position: static; margin-bottom: 36px; padding: 0; }
+      .contents ol { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+      .contents li:last-child { border-bottom: 0; }
+      .contents a { font-size: 11px; gap: 9px; padding: 10px 0; }
+      .article { font-size: 15px; }
+      h2 { font-size: 27px; }
+      .section-heading { gap: 10px; margin-bottom: 17px; }
+      section { margin-bottom: 30px; padding-bottom: 28px; }
+      .contact { padding: 23px; }
+      .footer { font-size: 9px; align-items: baseline; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print {
+      :root { background: #fff; color: #000; }
+      main { width: 100%; }
+      body { font-size: 11pt; }
+      .skip, .contents, .footer, .brand-mark { display: none; }
+      .hero { padding: 28px 0; }
+      h1 { font-size: 40pt; }
+      .summary { background: none; color: #000; border: 1px solid #aaa; margin-bottom: 30px; }
+      .summary-label { color: #000; }
+      .document { display: block; }
+      .section-heading { break-after: avoid; }
+      section { margin-bottom: 20px; padding-bottom: 15px; }
+      .contact { break-inside: avoid; background: none; }
+    }
+  </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: October 26, 2026</p>
+<a class="skip" href="#policy-content">Skip to policy</a>
+<main id="top">
+  <div class="masthead">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>Wayfair Reviews Exporter - CSV</span></div>
+    <span class="masthead-note">Privacy &amp; data</span>
+  </div>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Your reviews. Your exports. Your choices.</p>
+      <h1>Privacy policy.</h1>
+      <p class="hero-copy">A clear look at how <strong>Wayfair Reviews Exporter - CSV</strong> handles information when you collect reviews, save a CSV or use connected services.</p>
+    </div>
+    <dl class="metadata">
+      <div><dt class="meta-label">Last updated</dt><dd><time datetime="2026-10-27">October 27, 2026</time></dd></div>
+      <div><dt class="meta-label">Extension version</dt><dd>1.1.11</dd></div>
+      <div><dt class="meta-label">Privacy contact</dt><dd><a href="mailto:e@ShipLang.com">e@ShipLang.com</a></dd></div>
+    </dl>
   </header>
-  <p><strong>Wayfair Reviews Exporter - CSV</strong>: collects available reviews from Wayfair product pages so you can view them, download a CSV file or copy CSV text.</p>
-  <p>This policy explains how the extension and its connected services handle information.</p>
-
+  <div class="summary" aria-label="Privacy overview">
+    <div><span class="summary-label">Review exports</span><p>Review results are saved in your browser's local extension storage. The export workflow does not upload reviews to ShipLang. Loading reviews and images makes requests to Wayfair and image hosts.</p></div>
+    <div><span class="summary-label">Optional connected services</span><p>Sign-in, membership and payments use ShipLang and its service providers. You can email us to request deletion of records held by weidali ltd.</p></div>
+  </div>
+  <div class="document">
+    <nav class="contents" aria-label="Policy sections">
+      <p class="contents-title">In this policy</p>
+      <ol>
+<li><a href="#information"><span>01</span>Information we handle</a></li>
+<li><a href="#use"><span>02</span>How information is used</a></li>
+<li><a href="#storage"><span>03</span>Storage & sharing</a></li>
+<li><a href="#services"><span>04</span>Connected services</a></li>
+<li><a href="#permissions"><span>05</span>Browser permissions</a></li>
+<li><a href="#retention"><span>06</span>Retention & deletion</a></li>
+<li><a href="#security"><span>07</span>Security & choices</a></li>
+<li><a href="#updates"><span>08</span>Policy updates</a></li>
+<li><a href="#contact"><span>09</span>Contact</a></li>
+      </ol>
+    </nav>
+    <div class="article" id="policy-content">
   <section aria-labelledby="information">
-    <h2 id="information">Information We Handle</h2>
+    <div class="section-heading"><span class="section-number" aria-hidden="true">01</span><h2 id="information">Information We Handle</h2></div>
     <p><strong>Product and review information:</strong> When you start an export, the extension reads the product title and page address, reviewer display names, locations shown in reviews, ratings, review text, verified-buyer labels, review dates and review-image URLs. A review location is text displayed by Wayfair, not your device's location.</p>
     <p><strong>Export and usage information:</strong> It records the export time, review counts, progress, completion status and any validation issues. Product identifiers derived from the site's hostname and product path are stored to track the five-product free allowance.</p>
     <p><strong>Account information:</strong> Optional sign-in and paid membership use account information returned by ShipLang, including your email address and membership expiration. If you contact support, your email address and message are used to handle your request.</p>
   </section>
   <section aria-labelledby="use">
-    <h2 id="use">How Information Is Used</h2>
+    <div class="section-heading"><span class="section-number" aria-hidden="true">02</span><h2 id="use">How Information Is Used</h2></div>
     <ul>
       <li>Check whether the active Wayfair page is a supported product page, load available reviews and prepare the results table.</li>
       <li>Compare collected reviews with the displayed total, identify incomplete exports and show export progress.</li>
@@ -55,14 +166,14 @@ a:focus-visible { outline: 2px solid #333; outline-offset: 3px; }
     </ul>
   </section>
   <section aria-labelledby="storage">
-    <h2 id="storage">Storage and Sharing</h2>
+    <div class="section-heading"><span class="section-number" aria-hidden="true">03</span><h2 id="storage">Storage and Sharing</h2></div>
     <p>The latest collected review set, product details, image URLs, export status, free-product identifiers and returned service account information are saved in this browser's local extension storage. The extension does not use Chrome sync storage for these records. Each saved export replaces the stored latest-export record.</p>
     <p>The review-export workflow does not upload collected reviews or the free-product list to ShipLang. To load more reviews, it operates Wayfair's on-page controls, which can cause normal requests to Wayfair using your existing browsing session. If Wayfair requires sign-in, the export can stop with a partial result.</p>
     <p>The results table loads up to six images per review from the image URLs supplied by the page. Their hosts receive ordinary image requests, including your IP address and standard request information. Image files may also be cached by your browser.</p>
     <p>Downloading creates a CSV file on your device. Copying places the CSV text on your clipboard; content may then be available to applications you paste into or other software with clipboard access.</p>
   </section>
   <section aria-labelledby="services">
-    <h2 id="services">Connected Services</h2>
+    <div class="section-heading"><span class="section-number" aria-hidden="true">04</span><h2 id="services">Connected Services</h2></div>
     <p><strong>weidali ltd / ShipLang</strong> operates the sign-in, membership and payment services. Choosing an upgrade opens <a href="https://crx.shiplang.com/">crx.shiplang.com</a>, with sign-in first when needed. These service requests include the application identifier, extension identifier, extension version, interface language and, when available, your email address and saved membership expiration. Returned account information is saved locally. ShipLang handles account and payment records needed to provide these services.</p>
     <ul>
       <li><strong>Google</strong> provides sign-in. See <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</li>
@@ -73,12 +184,12 @@ a:focus-visible { outline: 2px solid #333; outline-offset: 3px; }
     <p><strong>GitHub</strong> hosts this policy page. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>. This page contains no analytics scripts, forms or external fonts.</p>
   </section>
   <section aria-labelledby="permissions">
-    <h2 id="permissions">Browser Permissions</h2>
+    <div class="section-heading"><span class="section-number" aria-hidden="true">05</span><h2 id="permissions">Browser Permissions</h2></div>
     <p><strong>Storage:</strong> Saves review exports, export progress, free-product identifiers and account or membership information locally.</p>
     <p><strong>Wayfair page access:</strong> The extension's content script runs on supported pages at wayfair.com, wayfair.ca, wayfair.co.uk and wayfair.de. It reads the current page address and review content and operates review-loading controls when you request an export. Chrome's extension settings let you manage the permitted sites.</p>
   </section>
   <section aria-labelledby="retention">
-    <h2 id="retention">Keeping and Deleting Data</h2>
+    <div class="section-heading"><span class="section-number" aria-hidden="true">06</span><h2 id="retention">Keeping and Deleting Data</h2></div>
     <p>Local records have no scheduled expiration. The stored latest export is replaced when another export is saved; free-product and account records remain until the extension's local data is removed or replaced. This version has no dedicated clear-data or sign-out button. Removing the extension clears its local extension storage.</p>
     <p>Downloaded CSV files, copied text and browser image caches are separate. Delete downloaded files with your device's file controls and manage your clipboard and browser cache separately. Removing the extension does not remove reviews from Wayfair or erase ShipLang's server records.</p>
     <p>Data held by weidali ltd is retained long term until the user requests deletion. No backups are maintained.</p>
@@ -86,20 +197,23 @@ a:focus-visible { outline: 2px solid #333; outline-offset: 3px; }
     <p>The connected providers listed above apply their own retention and deletion policies to information they hold independently.</p>
   </section>
   <section aria-labelledby="security">
-    <h2 id="security">Security and Your Choices</h2>
+    <div class="section-heading"><span class="section-number" aria-hidden="true">07</span><h2 id="security">Security and Your Choices</h2></div>
     <p>ShipLang service pages use HTTPS. CSV exports and copied CSV text are readable data, so consider who can access your device, downloaded files or clipboard before sharing them.</p>
     <p>You choose when to collect reviews, copy or download results, use paid services or contact support. You can restrict site access or remove the extension through Chrome's extension settings. Only export and share review information in ways appropriate to your use of that information.</p>
   </section>
   <section aria-labelledby="updates">
-    <h2 id="updates">Policy Updates</h2>
+    <div class="section-heading"><span class="section-number" aria-hidden="true">08</span><h2 id="updates">Policy Updates</h2></div>
     <p>We will revise this page when our data practices change and update the date above.</p>
   </section>
   <section class="contact" aria-labelledby="contact">
-    <h2 id="contact">Get in Touch</h2>
+    <div class="section-heading"><span class="section-number" aria-hidden="true">09</span><h2 id="contact">Get in Touch</h2></div>
     <p>For privacy questions or deletion requests, email <a href="mailto:e@ShipLang.com">e@ShipLang.com</a>.</p>
     <p><strong>Developer:</strong> Wayfair Reviews Exporter - CSV</p>
     <p><strong>ShipLang service operator:</strong> weidali ltd</p>
   </section>
-</main>
+      </div>
+    </div>
+    <footer class="footer"><span>Wayfair Reviews Exporter - CSV</span><a href="#top">Back to top &uarr;</a></footer>
+  </main>
 </body>
 </html>
