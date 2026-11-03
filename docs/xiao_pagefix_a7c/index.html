@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="extension-policy-author" content="xiao_pagefix_a7c">  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy policy for Character Encoding, a browser extension for repairing webpage character encoding.">
+  <title>Privacy Policy — Character Encoding</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #182739; background: #f4f6f8; line-height: 1.7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 40px 20px; }
+    main { max-width: 880px; margin: 0 auto; padding: 48px; background: #fff; border: 1px solid #dce3ea; border-radius: 16px; }
+    header { padding-bottom: 28px; border-bottom: 1px solid #dce3ea; }
+    .eyebrow { margin: 0 0 8px; font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #416887; }
+    h1 { margin: 0 0 12px; font-size: clamp(2rem, 6vw, 2.8rem); line-height: 1.15; letter-spacing: -.035em; }
+    h2 { margin: 32px 0 10px; font-size: 1.25rem; line-height: 1.4; }
+    p { margin: 12px 0; }
+    .meta { margin: 0; color: #526272; font-size: .95rem; }
+    .summary { padding: 18px 22px; background: #edf5fb; border-left: 4px solid #397ba8; border-radius: 4px; margin: 26px 0; }
+    .summary p { margin: 0; }
+    ul { padding-left: 23px; }
+    li { margin: 8px 0; }
+    a { color: #175f93; text-underline-offset: 3px; overflow-wrap: anywhere; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { text-align: left; vertical-align: top; padding: 12px; border-bottom: 1px solid #dce3ea; }
+    th { background: #f4f6f8; }
+    td:first-child { width: 27%; font-weight: 600; }
+    code { font-size: .9em; overflow-wrap: anywhere; }
+    footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid #dce3ea; font-size: .9rem; color: #526272; }
+    @media (max-width: 600px) { body { padding: 16px 10px; } main { padding: 24px 18px; border-radius: 10px; } th, td { padding: 10px 8px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Character Encoding</p>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective date: <time datetime="2026-11-03">November 3, 2026</time> · Extension version reviewed: 1.3.1</p>
+    <p class="meta">Product identifier: <code>xiao_pagefix_a7c</code></p>
+  </header>
+
+  <div class="summary"><p><strong>Character Encoding repairs the character encoding of a webpage you choose.</strong> Page decoding and encoding detection run in your browser. Account and membership features use a separate ShipLang-hosted service, as explained below.</p></div>
+
+  <section aria-labelledby="page-data">
+    <h2 id="page-data">1. Webpage information and network requests</h2>
+    <p>When you request a repair, the extension accesses the selected tab's URL, downloads that page's original HTML bytes, reads encoding and language hints, and processes its text locally. It uses this information to detect or apply a character encoding and update the displayed page. The extension does not upload the page's HTML or text to the developer or ShipLang.</p>
+    <p>Repairing a page is not an offline operation: the extension makes another request to the original page URL. Chrome may include the same-origin session credentials, such as cookies, that apply to that website. Images, stylesheets and other retained page resources can also be requested from their original hosts. Those websites handle these requests under their own privacy policies.</p>
+    <p>Page content and the applied encoding are processed in the page's execution context. The extension does not save page HTML or a browsing-history database in its persistent storage. Reloading or closing the page clears its temporary execution state.</p>
+  </section>
+
+  <section aria-labelledby="local-data">
+    <h2 id="local-data">2. Information stored in your browser</h2>
+    <p>The extension uses Chrome's local extension storage, not its browser-sync storage, for the following purposes:</p>
+    <table>
+      <thead><tr><th scope="col">Category</th><th scope="col">Information and purpose</th></tr></thead>
+      <tbody>
+        <tr><td>Account and membership</td><td>The account information returned by the hosted service is stored locally. The extension reads the product identifier, account email and membership expiration to identify the product and determine access. Other fields returned in that account response can also be stored.</td></tr>
+        <tr><td>Trial usage</td><td>A count of successful trial repairs and any pending repair task, including a generated task identifier, tab identifier and whether it counts toward the trial. This prevents overlapping operations from using the same remaining trial allowance.</td></tr>
+        <tr><td>Temporary repair results</td><td>A task identifier, operation result and chosen encoding. Completed results are removed after the extension updates the corresponding usage record.</td></tr>
+      </tbody>
+    </table>
+    <p>Account and accumulated trial records have no automatic expiration in the extension. A pending record can remain when an operation has not yet been resolved. These local records do not contain the repaired page's HTML or text.</p>
+  </section>
+
+  <section aria-labelledby="accounts">
+    <h2 id="accounts">3. ShipLang accounts, membership and checkout</h2>
+    <p>When you open an account or payment flow, the extension opens a page at <a href="https://crx.shiplang.com/">crx.shiplang.com</a>. The request includes the product identifier, Chrome extension identifier, extension version and browser interface language. If an account is already stored, it also sends the account email and locally recorded membership expiration. The email and membership expiration are sent as URL query parameters to that service.</p>
+    <p>The service can return account and membership information to the extension for local storage and access checks. Normal connection information, such as the requesting IP address and requested URL, is visible to the service handling the request. Page content being repaired is not included in this account request.</p>
+    <p>The hosted sign-in implementation uses Google to obtain the account's email and basic profile information, such as name and avatar, and uses a callback hosted at <code>login.chromeextensions.workers.dev</code>. See the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+    <p>The hosted service implementation also processes user, product and extension identifiers, IP address, interface language, account creation and login times, login counts, membership status, and payment-page access times and counts. Creating an order can produce a transaction record containing the account email, user and product identifiers, selected plan and price, IP address, language, order status, and creation or payment times.</p>
+    <p>For compatibility with previous memberships, the hosted payment flow may send the account email to the legacy membership service at <code>pay.extensiondata.com</code> to check eligibility. Hosted payment pages also include remote images from <code>img.icons8.com</code> and <code>tpc.googlesyndication.com</code>; those resource hosts receive the network requests needed to load those images. The presence of these images alone does not establish what further processing those hosts perform.</p>
+    <p>Checkout takes place on hosted service pages; the extension itself does not implement a payment-card form. The service supports PayPro Global, Stripe and Paddle routes. The provider actually used depends on the plan and checkout presented to you; listing these routes does not mean that every purchase is sent to all providers. When offered and used, the relevant provider policy applies: <a href="https://docs.payproglobal.com/documents/legal/privacyPolicy.pdf">PayPro Global Privacy Policy</a>, <a href="https://stripe.com/privacy">Stripe Privacy Policy</a>, or <a href="https://www.paddle.com/legal/privacy">Paddle Privacy Policy</a>.</p>
+    <p>ShipLang's supplied account-service policy states that login and membership records are retained until deletion is requested and that no backup of deleted account records is retained. To request account deletion, email <a href="mailto:support@shiplang.com">support@shiplang.com</a>, identify the extension by name or download link, and describe your request. Its stated processing period is seven days. This account-deletion statement does not specify the retention periods of separate operational, legacy-membership or transaction records; contact ShipLang and the relevant provider for those records. Service-side retention is separate from the extension's local browser storage.</p>
+  </section>
+
+  <section aria-labelledby="permissions">
+    <h2 id="permissions">4. Why the extension requests permissions</h2>
+    <table>
+      <thead><tr><th scope="col">Permission</th><th scope="col">Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>activeTab</code></td><td>Temporarily access the active webpage after your interaction with the extension, so the requested page can be inspected and repaired.</td></tr>
+        <tr><td><code>scripting</code></td><td>Run the bundled encoding detector and repair code in the selected tab, read encoding information, and update that page's display.</td></tr>
+        <tr><td><code>storage</code></td><td>Keep local account and membership information, trial usage, pending tasks and temporary operation results.</td></tr>
+      </tbody>
+    </table>
+    <p>The reviewed version does not request persistent host permissions and does not install an always-running content script across websites. It does use the current tab's identifier and URL when performing a requested operation.</p>
+  </section>
+
+  <section aria-labelledby="sharing">
+    <h2 id="sharing">5. Sharing, advertising and analytics</h2>
+    <p>The extension's reviewed code contains no advertising or analytics SDK and no mechanism for selling personal information. It does not transmit repaired webpage content or a browsing-history collection to the developer or ShipLang. Network requests to the original website, retained resource hosts and ShipLang are described above. This statement does not imply that those separate services keep no connection or operational logs.</p>
+  </section>
+
+  <section aria-labelledby="deletion">
+    <h2 id="deletion">6. Your choices and deletion</h2>
+    <p>You control which webpage to repair. You can reload the page to restore the website's original display, and you can stop extension processing by disabling or removing the extension.</p>
+    <p>To remove local account and usage records, clear the extension's local storage through Chrome's extension tools or uninstall the extension. This version has no built-in account-deletion or local-storage reset button. Removing local data does not delete an account held by ShipLang or records held by a payment or identity provider; request service-side deletion from the relevant provider.</p>
+  </section>
+
+  <section aria-labelledby="contact">
+    <h2 id="contact">7. Contact and policy updates</h2>
+    <p>For questions about Character Encoding and this policy, contact the developer at <a href="mailto:e@shiplang.com">e@shiplang.com</a>. For ShipLang account-record deletion, use <a href="mailto:support@shiplang.com">support@shiplang.com</a>.</p>
+    <p>The developer and ShipLang are cooperating parties. Character Encoding is the developer's product and does not represent ShipLang. ShipLang supplies development tooling and the login and payment technology used by the integration.</p>
+    <p>This policy describes the reviewed extension version above. If its data practices change, this page will be updated with a new effective date.</p>
+  </section>
+
+  <footer>This privacy page uses inline styling and does not load external scripts, fonts or tracking resources.</footer>
+</main>
+</body>
+</html>
