@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="extension-policy-author" content="xiao_modern2fa_7k2"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Privacy policy for the Authenticator Chrome extension.">
+<title>Authenticator — Privacy Policy</title>
+<style>
+:root{color-scheme:light;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#202124;background:#f4f6f8;line-height:1.65}*{box-sizing:border-box}body{margin:0;padding:48px 22px}main{max-width:880px;margin:auto;padding:48px 54px;background:#fff;border:1px solid #e3e7ec;border-radius:18px}header{padding-bottom:28px;border-bottom:1px solid #e3e7ec}p{margin:12px 0}h1{margin:5px 0 8px;font-size:38px;letter-spacing:-1px;line-height:1.2}h2{margin:30px 0 10px;font-size:22px;line-height:1.35}h3{font-size:16px;margin:20px 0 6px}.eyebrow,.date{color:#5f6368;font-size:14px}.eyebrow{letter-spacing:.09em;text-transform:uppercase;font-weight:650}.summary{font-size:18px;color:#475467}a{color:#2458c6;overflow-wrap:anywhere}li{margin:8px 0}ul{padding-left:24px}footer{margin-top:34px;padding-top:20px;border-top:1px solid #e3e7ec;font-size:14px;color:#5f6368}code{background:#f2f4f7;border-radius:4px;padding:2px 5px;font-size:.9em}@media(max-width:600px){body{padding:12px}main{padding:28px 23px;border-radius:12px}h1{font-size:31px}.summary{font-size:16px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<p class="eyebrow">Authenticator</p>
+<h1>Privacy Policy</h1>
+<p class="date">Effective date: 2026-11-07 · Product ID: xiao_modern2fa_7k2</p>
+<p class="summary">This policy explains how the Authenticator Chrome extension handles authentication accounts, browser information, and optional online services.</p>
+</header>
+<section>
+<h2>1. Who provides the extension</h2>
+<p>The extension developer can be contacted at <a href="mailto:e@shiplang.com">e@shiplang.com</a>. The developer works with ShipLang, which provides AI development software and login and payment technology. This extension is the developer's product and does not represent ShipLang.</p>
+</section>
+<section>
+<h2>2. Authentication accounts and browser storage</h2>
+<p>Authenticator processes the account names, issuers, shared secret keys, OTP type, algorithm, digit count, time period, and counter values that you enter, import, or obtain from an authenticator QR code. These values are used to generate TOTP or HOTP verification codes, display accounts, and support editing, copying, filling, importing, and exporting.</p>
+<p>Authentication account records and preferences are saved using Chrome extension sync storage. If Chrome Sync is enabled, Chrome may synchronize this data through your Google account under your browser settings. Account data is therefore not limited to storage on one device. The extension does not add its own encryption layer to these stored account records.</p>
+<p>Local extension storage holds login and membership information, a cloud-sync password when configured, pending-operation state, and a legacy icon cache. The cloud-sync password is stored locally so the extension can reuse it for the optional cloud service. Exported files contain account data, including secret keys; the extension does not encrypt these files.</p>
+</section>
+<section>
+<h2>3. The current web page</h2>
+<p>The extension reads the active tab's URL to prioritize accounts that match the current website. When you request QR scanning, its page script reads page images and canvases and decodes authenticator QR content in the browser. Browser restrictions, protected pages, inaccessible images, or unsupported QR content may prevent scanning.</p>
+<p>When you choose to fill a code, the page script inspects candidate verification fields and inserts that code into a suitable field. The destination website then handles the value you submit according to its own privacy policy. The extension does not transmit page images or general browsing history to the cloud-sync or membership service as part of QR scanning or account matching.</p>
+</section>
+<section>
+<h2>4. Optional login, membership, and cloud synchronization</h2>
+<h3>Login and membership</h3>
+<p>When you open login or payment, the extension opens a hosted page on <code>crx.shiplang.com</code>. It sends the product ID, extension ID, version, interface language, and, when present, your service user ID and locally recorded membership expiry. The hosted service returns account and membership information that is stored locally in the extension. ShipLang's login and membership service stores the email address, avatar, and membership expiry needed to provide that service, together with the identifiers required to associate the result with the product.</p>
+<p>The extension does not collect payment card numbers in its own interface. Login and payment pages may use external identity or payment providers. If you choose Google login, Google's <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Privacy Policy</a> applies. If the hosted checkout offers Stripe or PayPro Global and you choose that provider, its respective <a href="https://stripe.com/privacy" rel="noopener noreferrer">Stripe Privacy Policy</a> or <a href="https://docs.payproglobal.com/documents/legal/privacyPolicy.pdf" rel="noopener noreferrer">PayPro Global Privacy Policy</a> applies to the information supplied there.</p>
+<h3>Cloud synchronization of authentication accounts</h3>
+<p>Cloud synchronization is a separate optional feature hosted at <code>shiplang.com/Totp/</code>. Once you sign in and configure a cloud-sync password, synchronization sends your product ID, account email or user identifier, sync password, and authentication records to that service. Authentication records include secret keys, issuer, account label, algorithm, and OTP type. The service returns stored authentication records so the extension can merge them with browser storage. Subsequent account additions, edits, and individual deletions may also be sent when these cloud credentials are configured.</p>
+<p>The current integration uses HTTPS requests with these values in request query parameters. HTTPS protects transport, but query parameters can be present in service or intermediary logs. The integration is not end-to-end encrypted; the receiving service can process the submitted secret keys. Local code generation does not require this separate cloud feature.</p>
+<h3>Uninstall and support</h3>
+<p>After a service user ID is available, the extension may register an uninstall feedback page on <code>crx.shiplang.com</code>, including that ID, the extension version, and interface language. The browser opens this page if you uninstall the extension. Opening an email support link opens Gmail's compose page; the extension does not send an email automatically. Information you choose to send is handled by your email provider and the support recipient.</p>
+</section>
+<section>
+<h2>5. Permissions and their purposes</h2>
+<ul>
+<li><strong>Storage:</strong> saves authentication accounts, preferences, login state, membership state, and cloud-sync configuration using Chrome extension storage.</li>
+<li><strong>Tabs:</strong> identifies the active website for account matching, communicates with its page script for scanning and filling, and opens the extension's demo page.</li>
+<li><strong>Website access:</strong> enables page scripts on supported web pages so the extension can scan authenticator QR codes and fill verification fields across different websites. It also permits requests needed for the configured cloud service. The extension does not use this access to sell browsing history or display advertising.</li>
+</ul>
+<p>The extension's source does not include advertising trackers or an analytics service. External websites, identity providers, payment processors, Chrome Sync, and the hosting platform have their own processing practices.</p>
+</section>
+<section>
+<h2>6. Retention, deletion, and your choices</h2>
+<p>You can remove individual authentication accounts in the extension or use its clear-data action to remove account records and preferences from extension sync storage and remove the locally saved cloud-sync password and icon cache. Chrome Sync and other signed-in devices may affect when synchronized changes propagate. Removing the extension clears its device storage under Chrome's normal behavior; browser sync data is also subject to your Chrome and Google account controls.</p>
+<p>Local account removal or clearing all local data should not be treated as a request to erase every server-side record. In particular, bulk clearing does not automatically request deletion of the service account or all cloud records. Stop using optional cloud synchronization and request server-side deletion separately if you want those records erased.</p>
+<p>ShipLang states that login and membership data is retained until you request deletion, is protected, and is not retained in backup after deletion. To request access, correction, or deletion, email <a href="mailto:support@shiplang.com">support@shiplang.com</a> and include the extension name or download link and an explanation of your request. ShipLang states that requests are handled within 7 days. For cloud authentication records, specify that your request also covers OTP secret keys and the associated cloud-sync account. This policy does not promise a separate verified retention period for cloud service logs or payment-provider records; contact the applicable service about those records.</p>
+<p>For help with browser data or this extension, contact <a href="mailto:e@shiplang.com">e@shiplang.com</a>. Keep any exported backup files under your control and delete them when no longer needed.</p>
+</section>
+<section>
+<h2>7. Changes and contact</h2>
+<p>This policy may be updated when extension behavior or service integrations change. The effective date above identifies this version. Questions about the extension's privacy practices can be sent to <a href="mailto:e@shiplang.com">e@shiplang.com</a>; questions about hosted login, membership, or cloud account deletion can be sent to <a href="mailto:support@shiplang.com">support@shiplang.com</a>.</p>
+</section>
+<footer>Authenticator · Privacy information for product xiao_modern2fa_7k2</footer>
+</main>
+</body>
+</html>
