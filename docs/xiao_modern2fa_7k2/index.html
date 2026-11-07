@@ -47,8 +47,8 @@
 <h2>5. Permissions and their purposes</h2>
 <ul>
 <li><strong>Storage:</strong> saves authentication accounts, preferences, login state, membership state, and cloud-sync configuration using Chrome extension storage.</li>
-<li><strong>Tabs:</strong> identifies the active website for account matching, communicates with its page script for scanning and filling, and opens the extension's demo page.</li>
-<li><strong>Website access:</strong> enables page scripts on supported web pages so the extension can scan authenticator QR codes and fill verification fields across different websites. It also permits requests needed for the configured cloud service. The extension does not use this access to sell browsing history or display advertising.</li>
+<li><strong>Active tab:</strong> temporarily reads the active tab's URL after you invoke the extension so it can prioritize matching accounts. The extension communicates with that tab's page script for scanning and filling, and can open its built-in demo page.</li>
+<li><strong>Website access:</strong> page scripts run on ordinary HTTP and HTTPS web pages to scan authenticator QR codes and fill verification fields across different websites. File URLs and protected browser pages are excluded. A separate host permission for <code>https://shiplang.com/*</code> permits the optional cloud-sync requests. The extension does not use this access to sell browsing history or display advertising.</li>
 </ul>
 <p>The extension's source does not include advertising trackers or an analytics service. External websites, identity providers, payment processors, Chrome Sync, and the hosting platform have their own processing practices.</p>
 </section>
