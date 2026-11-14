@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="extension-policy-author" content="xiran_clearcache"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clear Cache — Keep Logins — Privacy Policy</title>
+<style>
+:root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#203c36;background:#f4f8f6}*{box-sizing:border-box}body{margin:0;padding:32px 20px}main{max-width:800px;margin:auto;padding:36px;background:#fff;border:1px solid #dfeae4;border-radius:20px}h1{font-size:30px;line-height:1.2;margin:0 0 10px}h2{font-size:20px;line-height:1.4;margin:30px 0 10px}p,li{font-size:16px;line-height:1.7}p{margin:10px 0}ul{padding-left:24px}.date{color:#667b72;font-size:14px}a{color:#087e70;overflow-wrap:anywhere}.lead{padding:16px 18px;border-radius:12px;background:#edf8f2}@media(max-width:540px){body{padding:12px}main{padding:22px 18px;border-radius:14px}h1{font-size:25px}}
+</style>
+</head>
+<body><main>
+<h1>Privacy Policy: Clear Cache — Keep Logins</h1>
+<p class="date">Effective date: November 14, 2026 · Version 0.2.22</p>
+<p class="lead">The extension clears browser data that you select. It operates through Chrome’s browsing-data APIs and does not send your browsing data to the developer or an application server.</p>
+<h2>What the extension does</h2>
+<p>When you start a cleanup, the extension asks Chrome to delete the selected data categories across ordinary websites in this browser profile for all time. The default selection is cached webpage files. Cookies and other personal-data categories remain unselected unless you choose them. Selections other than the default cache require confirmation before removal.</p>
+<p>Optional categories include cookies, browsing history, download history, saved form data, offline cache, local website storage, website databases, service workers and website file storage. Saved form data may include local autocomplete entries, addresses and payment cards. The extension does not request password deletion. Clearing download history does not delete files already downloaded to your computer. Clearing cookies can sign you out of websites, and clearing website storage can remove preferences, offline content or unsynced drafts.</p>
+<p>Deletion cannot be undone by the extension. Chrome decides how its APIs apply to browser-managed data and policies. The extension does not directly access cloud accounts. If browser synchronization is enabled, Chrome may propagate applicable deletions to other synced devices or your account. This is controlled by Chrome and your synchronization settings.</p>
+<h2>Information accessed and stored</h2>
+<p>The extension sends data-category flags and deletion options to Chrome. It does not read or copy webpage contents, site URLs, cookie values, history entries, form values, saved addresses, payment-card values or passwords. It does not collect device identifiers, advertising identifiers, analytics or telemetry.</p>
+<p>Chrome’s local extension storage contains your selected switches and the fixed cleanup scope, plus the most recent cleanup record. That record contains a random task identifier, start and finish times, selected data types, success or failure results, and interruption flags. These records contain no website lists or contents. They are used to show the result and prevent duplicate cleanup when a previous task was interrupted. Temporary confirmation tokens are kept in memory and expire after two minutes.</p>
+<p>For an update installed under the same extension ID, the extension may read an older version’s cache preference from Chrome sync storage once. It does not write new settings or task records to sync storage.</p>
+<h2>Optional window closing</h2>
+<p>If you enable closing windows and confirm, the extension creates a new normal window and closes the previous normal windows in this browser profile. It does not target incognito or app windows. Only window identifiers are used temporarily; tab URLs and page titles are not read or stored. Unsaved work in closed tabs may be lost.</p>
+<h2>Permissions</h2>
+<ul><li><strong>browsingData:</strong> needed to remove the browser-data categories you select and confirm, and to check whether Chrome permits each category.</li><li><strong>storage:</strong> needed to remember choices, show the most recent result, and retain an interruption lock locally.</li></ul>
+<p>No blanket website permission, webpage content script or permission to read tab URLs is requested. Cleanup excludes extension origins and protected hosted-app origins in its removal options.</p>
+<h2>Retention and deletion</h2>
+<p>Your choices remain locally until you change them or remove the extension. The most recent cleanup record is replaced when another cleanup starts. Removing the extension removes its local extension storage. A safety interruption flag can remain until Chrome restarts; it is used only to avoid retrying an uncertain deletion. The developer does not have a copy of these records and cannot retrieve or restore deleted browser data.</p>
+<h2>Sharing, external links and support</h2>
+<p>The extension has no account service, payment integration, advertising, data broker, analytics service or remote executable code. It does not sell, transfer or share the browser data or local records described above with third parties.</p>
+<p>The example, support-email and privacy links open only when you choose them. Their destinations may receive ordinary navigation information under their own policies. This policy page is hosted on GitHub Pages; visits may be processed according to the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>. The policy does not load external scripts, fonts or tracking resources.</p>
+<p>If you choose to email the developer, your message and contact information are used to respond to your request. The extension never sends a support message automatically. Please share only information needed for your request; do not send passwords or payment details. You may use the contact below to ask about support correspondence or its deletion.</p>
+<h2>Limited Use</h2>
+<p>The extension’s handling of information obtained through Chrome APIs complies with the Chrome Web Store User Data Policy and its Limited Use requirements. Information is used only for the disclosed cleanup functionality. It is not used for personalized advertising, profiling, creditworthiness or lending decisions, and it is not sold.</p>
+<h2>Contact</h2>
+<p>For support or privacy questions, contact <a href="mailto:e@shiplang.com">e@shiplang.com</a>.</p>
+</main></body></html>
