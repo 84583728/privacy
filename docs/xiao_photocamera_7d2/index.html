@@ -3,36 +3,46 @@
 <head>
 <meta name="extension-policy-author" content="xiao_photocamera_7d2"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Photo as Webcam Privacy Policy</title>
+<title>Photo as Webcam – Privacy Policy</title>
 <style>
-body{margin:0;background:#f3f5f0;color:#162e26;font:16px/1.7 system-ui,sans-serif}main{max-width:740px;margin:0 auto;padding:40px 24px 64px}h1,h2{line-height:1.25}h2{margin-top:34px}a{color:#204d3d}.date{color:#516459}
+:root{color-scheme:light}
+body{margin:0;background:#f3f5f0;color:#162e26;font:16px/1.65 system-ui,sans-serif;overflow-wrap:anywhere}
+main{max-width:740px;margin:0 auto;padding:clamp(22px,5vw,44px) clamp(18px,4vw,30px) 54px}
+h1,h2{line-height:1.24}h1{margin:0}h2{margin-top:30px}
+.meta{color:#496259}a{color:#175541}dt{font-weight:700;margin-top:14px}dd{margin:3px 0 0}
 </style>
 </head>
 <body>
 <main>
 <h1>Photo as Webcam Privacy Policy</h1>
-<p class="date">Last updated November 25, 2026</p>
-<h2>What the extension stores</h2>
-<p>Photo as Webcam processes the JPG, PNG or WebP photo you choose. It re-encodes the photo at a limited size, removing the original file metadata, and keeps the processed copy in Chrome's local extension storage on your device. The extension keeps that copy until you replace or delete it, or remove the extension. The extension does not upload your photo to the developer's servers or sync it between devices.</p>
-<h2>What a website can access</h2>
-<p>Choosing a photo saves a local copy. To use it on a compatible web page, open the extension on that page and explicitly enable photo mode. The extension then makes the processed image available to that page as a replacement camera feed. The enabled page can access, copy, record or transmit the image and may keep copies under its own policies. Choose an image you are comfortable sharing with that page. A full page reload or navigation to a new page requires you to enable photo mode again.</p>
-<p>For pages where you enable the photo, the extension temporarily keeps Chrome’s tab and document identifiers in browser session storage so it can later stop the correct video output. It does not send those identifiers to a server.</p>
+<p class="meta">Last updated November 25, 2026</p>
+<p>This policy covers the <strong>Photo as Webcam</strong> Chrome extension, listed as <strong>Image as Webcam</strong> in U.S. English and <strong>照片替代摄像头</strong> in Simplified Chinese. The extension lets you use one selected photo as the camera feed on a compatible web page that you choose.</p>
+
 <h2>Chrome permissions</h2>
-<ul>
-<li><strong>storage</strong> keeps the processed image on this device and supports saving, previewing, replacing and deleting it.</li>
-<li><strong>activeTab</strong> grants temporary access to the current tab after you open the extension. The extension supplies photos only after you enable photo mode on that page.</li>
-<li><strong>scripting</strong> runs the extension's bundled camera script in the enabled tab's main page and controls the photo feed there.</li>
-</ul>
-<p>Chrome continues to manage microphone requests and permissions.</p>
-<h2>Free usage and membership</h2>
-<p>The extension keeps the number of remaining free photo saves in Chrome's local extension storage. If you choose to view membership pricing, the extension opens ShipLang's account and payment service. It sends the product ID, Chrome extension ID, extension version, browser language, and any existing ShipLang user ID and membership expiry to that service. The extension saves membership details returned by ShipLang on this device to verify your access. The payment service does not receive your selected photo.</p>
-<p>ShipLang provides sign-in and payment services for the independent developer of this extension. If you sign in with Google, account information such as your email address and profile image is used to manage your ShipLang account and membership. See the <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and <a href="https://shiplang.com/privacy">ShipLang Privacy Policy</a>. If you purchase a membership, the checkout identifies the payment provider that processes your payment details. The extension does not receive your card details.</p>
-<p>To request deletion of your ShipLang membership data, email <a href="mailto:support@shiplang.com">support@shiplang.com</a> and include the extension name or its download link. ShipLang states that it retains membership data until deletion is requested and handles deletion requests within seven days.</p>
-<h2>Stopping and deleting</h2>
-<p>Use the extension to stop photo mode on the current page or delete the selected photo. Stopping ends the extension's photo output on that page and retains the local copy. Deleting removes the stored copy and stops its output on enabled pages. Neither action erases copies that a website already made. After stopping photo mode, restart the camera on the page to use Chrome's normal camera behavior. Uninstalling the extension removes its local extension data under Chrome's normal handling.</p>
-<h2>Optional links and contact</h2>
-<p>Photo as Webcam does not use analytics, advertising or tracking services. Clicking <a href="https://shiplang.com/camera-test">Test camera</a> opens a separate website. If you enable photo mode there, the page can access the feed like any other enabled page. Use of that site is subject to <a href="https://shiplang.com/privacy">the site's privacy policy</a>. The contact link opens a mail service.</p>
-<p>For privacy questions, email <a href="mailto:e@shiplang.com">e@shiplang.com</a>.</p>
+<dl>
+<dt><code>storage</code></dt>
+<dd>Stores the processed photo and its format, the number of free saves remaining, and any membership details returned by ShipLang in Chrome’s local extension storage. Chrome’s session storage keeps temporary tab and document IDs so the extension can stop the correct photo feed. The extension uses local and session storage on this device. It does not use Chrome Sync.</dd>
+<dt><code>activeTab</code></dt>
+<dd>Grants temporary access to the current tab when you open the extension. The extension checks the current page to determine whether it can provide a photo feed there. It only supplies the photo after you select “Enable photo on this page.”</dd>
+<dt><code>scripting</code></dt>
+<dd>Runs the bundled camera script in the top-level document of the page where you enable photo mode. The script supplies the selected photo as the video feed and stops the output when you disable it.</dd>
+</dl>
+<p>These are the three permissions requested in the extension manifest. Chrome manages the website’s normal camera and microphone permissions.</p>
+
+<h2>Photos and the pages you enable</h2>
+<p>The extension processes the JPG, PNG or WebP photo you choose. It re-encodes the image, limits its size and strips the original file metadata. The processed copy is saved on this device until you replace it, delete it or uninstall the extension. The extension does not upload the photo to the developer or ShipLang.</p>
+<p>A web page can read, copy, record or transmit the photo feed after you enable it for that page. This includes scripts running on that page. Copies a website makes are subject to that website’s policies. Refreshing or navigating to a new page requires you to enable photo mode again. The extension does not send the tab and document IDs used for this feature to a server.</p>
+
+<h2>Optional login and payments</h2>
+<p>When you choose to view membership pricing, the extension opens the ShipLang account and payment service at <a href="https://crx.shiplang.com">crx.shiplang.com</a>. The request contains the product ID, Chrome extension ID, extension version, browser interface language and, if already saved, your ShipLang user ID and membership expiry. The extension stores the membership details returned by ShipLang on this device to check access.</p>
+<p>ShipLang provides sign-in and payment services to the independent extension developer. Google sign-in is used to establish your identity. The account and membership service uses information such as your email address, profile image and membership expiry to manage access. See the <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and the <a href="https://shiplang.com/en/privacy">ShipLang Privacy Policy</a>.</p>
+<p>If you purchase a membership, the service displayed at checkout processes the payment information you provide. If Stripe is offered at checkout, see the <a href="https://stripe.com/privacy">Stripe Privacy Policy</a>. The extension does not receive your payment card details or send your photo to the payment service.</p>
+<p>ShipLang says its sign-in and membership data is kept until deletion is requested and that it does not retain backups of that data. Email <a href="mailto:support@shiplang.com">support@shiplang.com</a> with the extension name or its download link, what you want deleted and why. ShipLang says it handles requests within seven days of receipt.</p>
+
+<h2>Stop sharing, delete your photo or contact us</h2>
+<p>“Stop using photo” stops the output for the current page and keeps the local image. “Delete photo” clears the saved image and stops the extension’s photo output on enabled pages. These actions do not delete copies a website has already made. Uninstalling the extension removes its local extension data under Chrome’s normal handling. To delete membership data held by ShipLang, use the request process above.</p>
+<p>The “Test camera” link opens a separate <a href="https://shiplang.com/camera-test">test page</a>. The extension handles a photo on that page in the same way as on other enabled pages. The contact link opens a mail service.</p>
+<p>For questions about this extension and policy, contact the developer at <a href="mailto:e@shiplang.com">e@shiplang.com</a>.</p>
 </main>
 </body>
 </html>
